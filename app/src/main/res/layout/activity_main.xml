@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:paddingTop="40dp"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/start"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/end"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="20dp" />
+
+    <TextView
+        android:id="@+id/temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.Material3.DisplayLarge"
+        app:layout_constraintStart_toStartOf="@id/start"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="- 11 " />
+
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:barrierDirection="end"
+        app:barrierMargin="12dp"
+        app:constraint_referenced_ids="temperature,temperatureAsFeel,weatherDescription,location" />
+
+    <TextView
+        android:id="@+id/weatherIcon"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:gravity="center"
+        android:textSize="90sp"
+        app:layout_constraintEnd_toEndOf="@id/end"
+        app:layout_constraintStart_toEndOf="@id/barrier"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="❄️" />
+
+    <TextView
+        android:id="@+id/temperatureAsFeel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+        app:layout_constraintStart_toStartOf="@id/start"
+        app:layout_constraintTop_toBottomOf="@id/temperature"
+        tools:text="Ощущается как - 30" />
+
+    <TextView
+        android:id="@+id/weatherDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="12dp"
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+        app:layout_constraintStart_toStartOf="@id/start"
+        app:layout_constraintTop_toBottomOf="@id/temperatureAsFeel"
+        tools:text="Легкий снег" />
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="12dp"
+        android:paddingBottom="24dp"
+        android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+        app:layout_constraintStart_toStartOf="@id/start"
+        app:layout_constraintTop_toBottomOf="@id/weatherDescription"
+        tools:text="Йошкар-Ола, Марий-Эл Россия" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/uvIndexFlow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_item"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="12dp"
+        app:constraint_referenced_ids="uvIndexTitle, uvIndexValue"
+        app:flow_horizontalAlign="center"
+        app:flow_maxElementsWrap="1"
+        app:flow_wrapMode="aligned"
+        app:layout_constraintEnd_toStartOf="@id/humidityFlow"
+        app:layout_constraintStart_toStartOf="@id/start"
+        app:layout_constraintTop_toBottomOf="@id/location" />
+
+    <TextView
+        android:id="@+id/uvIndexTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="УФ-индекс"
+        android:textAppearance="@style/TextAppearance.Material3.LabelLarge" />
+
+    <TextView
+        android:id="@+id/uvIndexValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Низкий"
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/humidityFlow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:background="@drawable/background_item"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="12dp"
+        app:constraint_referenced_ids="humidityTitle, humidityValue"
+        app:flow_horizontalAlign="center"
+        app:flow_maxElementsWrap="1"
+        app:flow_wrapMode="aligned"
+        app:layout_constraintEnd_toEndOf="@id/end"
+        app:layout_constraintStart_toEndOf="@id/uvIndexFlow"
+        app:layout_constraintTop_toBottomOf="@id/location" />
+
+    <TextView
+        android:id="@+id/humidityTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Влажность"
+        android:textAppearance="@style/TextAppearance.Material3.LabelLarge" />
+
+    <TextView
+        android:id="@+id/humidityValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="80 %"
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/pressureFlow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/background_item"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="12dp"
+        app:constraint_referenced_ids="pressureTitle, pressureValue"
+        app:flow_horizontalAlign="center"
+        app:flow_maxElementsWrap="1"
+        app:flow_wrapMode="aligned"
+        app:layout_constraintEnd_toStartOf="@id/precipitationFlow"
+        app:layout_constraintStart_toStartOf="@id/start"
+        app:layout_constraintTop_toBottomOf="@id/uvIndexFlow" />
+
+    <TextView
+        android:id="@+id/pressureTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Атм. давление"
+        android:textAppearance="@style/TextAppearance.Material3.LabelLarge" />
+
+    <TextView
+        android:id="@+id/pressureValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1023 hPa"
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/precipitationFlow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/background_item"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="12dp"
+        app:constraint_referenced_ids="precipitationTitle, precipitationValue"
+        app:flow_horizontalAlign="center"
+        app:flow_maxElementsWrap="1"
+        app:flow_wrapMode="aligned"
+        app:layout_constraintEnd_toEndOf="@id/end"
+        app:layout_constraintStart_toEndOf="@id/pressureFlow"
+        app:layout_constraintTop_toBottomOf="@id/uvIndexFlow" />
+
+    <TextView
+        android:id="@+id/precipitationTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Уровень осадков"
+        android:textAppearance="@style/TextAppearance.Material3.LabelLarge" />
+
+    <TextView
+        android:id="@+id/precipitationValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1023 mm"
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/windFlow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/background_item"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="12dp"
+        app:constraint_referenced_ids="windTitle, windValue"
+        app:flow_horizontalAlign="center"
+        app:flow_maxElementsWrap="1"
+        app:flow_wrapMode="aligned"
+        app:layout_constraintEnd_toEndOf="@id/end"
+        app:layout_constraintStart_toStartOf="@id/start"
+        app:layout_constraintTop_toBottomOf="@id/pressureFlow" />
+
+    <TextView
+        android:id="@+id/windTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Скорость и направление ветра"
+        android:textAppearance="@style/TextAppearance.Material3.LabelLarge" />
+
+    <TextView
+        android:id="@+id/windValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12 км/ч на запад"
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
