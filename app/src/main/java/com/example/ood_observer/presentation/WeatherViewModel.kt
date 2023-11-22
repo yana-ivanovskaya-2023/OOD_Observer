@@ -6,12 +6,13 @@ import com.example.ood_observer.domain.IWeatherDataObserver
 import com.example.ood_observer.domain.WeatherData
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.filterNotNull
 
 class WeatherViewModel(
     private val weatherDataObservable: IWeatherDataObservable
 ) : ViewModel(), IWeatherDataObserver {
 
-    val state get() = mState.asStateFlow()
+    val state get() = mState.asStateFlow().filterNotNull()
 
     private val mState = MutableStateFlow<WeatherData?>(null)
 

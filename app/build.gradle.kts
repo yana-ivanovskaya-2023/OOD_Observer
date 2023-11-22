@@ -33,6 +33,8 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    viewBinding.isEnabled = true
 }
 
 dependencies {
@@ -52,5 +54,5 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.11.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
     implementation("com.google.code.gson:gson:2.10.1")
-    implementation ("com.jakewharton.threetenabp:threetenabp:1.4.6")
+    implementation("com.jakewharton.threetenabp:threetenabp:1.4.6")
 }

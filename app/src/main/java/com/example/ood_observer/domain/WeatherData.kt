@@ -12,5 +12,6 @@ data class WeatherData(
     val uvIndex: Int,
     val precipitation: Precipitation,
     val localizedDescription: String,
-    val localObservationDateTime: ZonedDateTime
+    val localObservationDateTime: ZonedDateTime,
+    val weatherCode: WeatherCode
 )

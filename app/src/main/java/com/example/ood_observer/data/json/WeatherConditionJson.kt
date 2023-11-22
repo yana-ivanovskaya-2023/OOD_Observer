@@ -21,31 +21,7 @@ data class WeatherConditionJson(
     @SerializedName("uvIndex")
     val uvIndex: String,
     @SerializedName("precipMM")
-    val precipitation: String
+    val precipitation: String,
+    @SerializedName("weatherCode")
+    val weatherCode: String
 )
-
-enum class WindDirectionJson {
-    @SerializedName("S")
-    SOUTH,
-
-    @SerializedName("N")
-    NORTH,
-
-    @SerializedName("W")
-    WEST,
-
-    @SerializedName("E")
-    EAST,
-
-    @SerializedName("NE")
-    NORTH_EAST,
-
-    @SerializedName("NW")
-    NORTH_WEST,
-
-    @SerializedName("SE")
-    SOUTH_EAST,
-
-    @SerializedName("SW")
-    SOUTH_WEST
-}

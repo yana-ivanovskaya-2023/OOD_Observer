@@ -7,11 +7,11 @@ import com.example.ood_observer.domain.Location
 import com.example.ood_observer.domain.Precipitation
 import com.example.ood_observer.domain.Pressure
 import com.example.ood_observer.domain.Temperature
+import com.example.ood_observer.domain.WeatherCode
 import com.example.ood_observer.domain.WeatherData
 import com.example.ood_observer.domain.Wind
 import com.example.ood_observer.domain.WindDirection
 import org.threeten.bp.ZonedDateTime
-import org.threeten.bp.format.DateTimeFormatter
 
 
 class WeatherDataMapper {
@@ -44,7 +44,10 @@ class WeatherDataMapper {
                 speed = condition.windSpeed.toIntOrNull() ?: 0,
                 direction = WindDirection.valueOf(condition.windDirection.name)
             ),
-            localObservationDateTime = ZonedDateTime.now()
+            localObservationDateTime = ZonedDateTime.now(),
+            weatherCode = WeatherCode.values().firstOrNull {
+                it.codes.contains(condition.weatherCode.toIntOrNull() ?: 0)
+            } ?: WeatherCode.UNKNOWN
         )
     }
 
