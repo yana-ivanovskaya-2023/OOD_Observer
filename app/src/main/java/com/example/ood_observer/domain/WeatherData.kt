@@ -1,6 +1,6 @@
 package com.example.ood_observer.domain
 
-import org.threeten.bp.ZonedDateTime
+import org.threeten.bp.LocalDateTime
 
 
 data class WeatherData(
@@ -12,6 +12,6 @@ data class WeatherData(
     val uvIndex: Int,
     val precipitation: Precipitation,
     val localizedDescription: String,
-    val localObservationDateTime: ZonedDateTime,
+    val localObservationDateTime: LocalDateTime,
     val weatherCode: WeatherCode
 )

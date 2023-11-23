@@ -4,9 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    android:paddingTop="60dp"
     tools:context=".ui.MainActivity">
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/background_app"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/start"
@@ -22,15 +30,38 @@
         android:orientation="vertical"
         app:layout_constraintGuide_end="20dp" />
 
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/background_item"
+        app:layout_constraintBottom_toBottomOf="@id/location"
+        app:layout_constraintEnd_toEndOf="@id/end"
+        app:layout_constraintStart_toStartOf="@id/start"
+        app:layout_constraintTop_toTopOf="@id/temperature" />
+
+    <TextView
+        android:id="@+id/observationDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:textColor="#456789"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif-medium"
+        app:layout_constraintBottom_toTopOf="@id/temperature"
+        app:layout_constraintStart_toStartOf="@id/start"
+        tools:text="Время наблюдения - 23 ноября 21:20" />
+
     <TextView
         android:id="@+id/temperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.Material3.DisplayLarge"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="90dp"
+        android:paddingTop="12dp"
+        android:textSize="64sp"
         app:layout_constraintStart_toStartOf="@id/start"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="- 11 " />
-
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier"
@@ -40,23 +71,25 @@
         app:barrierMargin="12dp"
         app:constraint_referenced_ids="temperature,temperatureAsFeel,weatherDescription,location" />
 
-    <TextView
+    <ImageView
         android:id="@+id/weatherIcon"
         android:layout_width="0dp"
-        android:layout_height="120dp"
-        android:gravity="center"
-        android:textSize="90sp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toTopOf="@id/humidityFlow"
         app:layout_constraintEnd_toEndOf="@id/end"
         app:layout_constraintStart_toEndOf="@id/barrier"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="❄️" />
+        app:layout_constraintTop_toTopOf="@id/temperature"
+        tools:src="@drawable/thundery" />
 
     <TextView
         android:id="@+id/temperatureAsFeel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
-        app:layout_constraintStart_toStartOf="@id/start"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/temperature"
         app:layout_constraintTop_toBottomOf="@id/temperature"
         tools:text="Ощущается как - 30" />
 
@@ -65,8 +98,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="12dp"
-        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
-        app:layout_constraintStart_toStartOf="@id/start"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/temperature"
         app:layout_constraintTop_toBottomOf="@id/temperatureAsFeel"
         tools:text="Легкий снег" />
 
@@ -76,8 +109,9 @@
         android:layout_height="wrap_content"
         android:paddingTop="12dp"
         android:paddingBottom="24dp"
-        android:textAppearance="@style/TextAppearance.Material3.BodySmall"
-        app:layout_constraintStart_toStartOf="@id/start"
+        android:textSize="12sp"
+
+        app:layout_constraintStart_toStartOf="@id/temperature"
         app:layout_constraintTop_toBottomOf="@id/weatherDescription"
         tools:text="Йошкар-Ола, Марий-Эл Россия" />
 
@@ -85,6 +119,7 @@
         android:id="@+id/uvIndexFlow"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:background="@drawable/background_item"
         android:paddingHorizontal="8dp"
         android:paddingVertical="12dp"
@@ -115,6 +150,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/background_item"
         android:paddingHorizontal="8dp"
         android:paddingVertical="12dp"

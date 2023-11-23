@@ -23,5 +23,7 @@ data class WeatherConditionJson(
     @SerializedName("precipMM")
     val precipitation: String,
     @SerializedName("weatherCode")
-    val weatherCode: String
+    val weatherCode: String,
+    @SerializedName("localObsDateTime")
+    val observationTime: String
 )

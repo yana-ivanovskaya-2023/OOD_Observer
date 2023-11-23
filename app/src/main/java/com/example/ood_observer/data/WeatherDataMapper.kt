@@ -11,10 +11,14 @@ import com.example.ood_observer.domain.WeatherCode
 import com.example.ood_observer.domain.WeatherData
 import com.example.ood_observer.domain.Wind
 import com.example.ood_observer.domain.WindDirection
-import org.threeten.bp.ZonedDateTime
+import org.threeten.bp.LocalDateTime
+import org.threeten.bp.format.DateTimeFormatter
+import java.util.Locale
 
 
 class WeatherDataMapper {
+
+    private val formatter = DateTimeFormatter.ofPattern("yyyy-M-dd hh:mm a", Locale.ENGLISH)
 
     fun map(json: WeatherMeasurementsJson): WeatherData = with(json) {
 
@@ -44,10 +48,10 @@ class WeatherDataMapper {
                 speed = condition.windSpeed.toIntOrNull() ?: 0,
                 direction = WindDirection.valueOf(condition.windDirection.name)
             ),
-            localObservationDateTime = ZonedDateTime.now(),
+            localObservationDateTime = LocalDateTime.parse(condition.observationTime, formatter),
             weatherCode = WeatherCode.values().firstOrNull {
                 it.codes.contains(condition.weatherCode.toIntOrNull() ?: 0)
-            } ?: WeatherCode.UNKNOWN
+            } ?: WeatherCode.PARTLY_CLOUDY
         )
     }
 

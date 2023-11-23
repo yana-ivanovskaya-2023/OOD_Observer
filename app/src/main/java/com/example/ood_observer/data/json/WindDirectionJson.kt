@@ -26,5 +26,30 @@ enum class WindDirectionJson {
     SOUTH_EAST,
 
     @SerializedName("SW")
-    SOUTH_WEST
+    SOUTH_WEST,
+
+    @SerializedName("NNE")
+    NORTH_NORTH_EAST,
+
+    @SerializedName("ENE")
+    EAST_NORTH_EAST,
+
+    @SerializedName("ESE")
+    EAST_SOUTH_EAST,
+
+    @SerializedName("SSE")
+    SOUTH_SOUTH_EAST,
+
+    @SerializedName("SSW")
+    SOUTH_SOUTH_WEST,
+
+    @SerializedName("WSW")
+    WEST_SOUTH_WEST,
+
+    @SerializedName("WNW")
+    WEST_NORTH_WEST,
+
+    @SerializedName("NNW")
+    NORTH_NORTH_WEST
+
 }
